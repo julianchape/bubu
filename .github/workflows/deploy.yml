@@ -4,6 +4,7 @@ on:
   push:
     branches: [main] # Asegúrate de que tu rama principal se llame main
 
+# Permisos necesarios para desplegar en GitHub Pages
 permissions:
   contents: read
   pages: write
@@ -13,29 +14,36 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: Checkout del código
         uses: actions/checkout@v4
 
-      - name: Set up Node
+      - name: Configurar Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
 
-      - name: Install dependencies
-        run: npm install
+      - name: Instalar dependencias
+        # 'npm ci' es mejor para CI porque es más rápido y estricto que 'install'
+        run: npm ci
 
-      - name: Build
+      - name: Corregir permisos de Vite
+        # Esta línea soluciona el error "Permission denied"
+        run: chmod +x ./node_modules/.bin/vite
+
+      - name: Compilar proyecto
+        # Esto ejecutará tu script "tsc && vite build"
         run: npm run build
 
-      - name: Setup Pages
+      - name: Configurar GitHub Pages
         uses: actions/configure-pages@v4
 
-      - name: Upload artifact
+      - name: Subir el resultado (dist)
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './dist' # Aquí le decimos a GitHub que lo importante está en dist
+          # Subimos la carpeta 'dist' que genera Vite
+          path: './dist'
 
-      - name: Deploy to GitHub Pages
+      - name: Desplegar en GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
