@@ -156,7 +156,7 @@ function renderNavbar(): void {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
           <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-            ¡Feliz Cumpleaños ${CONFIG.nombreNovia}!
+            Feliz Cumple ${CONFIG.nombreNovia}!
           </h1>
         </div>
         <button id="musicBtn" class="p-2 rounded-full transition-all ${activeClasses} hover:scale-110">
