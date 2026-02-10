@@ -1,4 +1,6 @@
+/// <reference types="vite/client" />
 import './styles.css';
+const BASE_URL = import.meta.env.BASE_URL;
 
 // ===== TIPOS =====
 type Page = 'home' | 'galeria' | 'razones' | 'trivia';
@@ -22,15 +24,15 @@ const CONFIG = {
   nombreNovia: 'Bubu',
   fechaCumple: new Date('2026-02-10'),
   fotos: [
-    '/bubu/foto1.jpeg',
-  '/bubu/foto2.jpeg',
-  '/bubu/foto4.jpeg',
-  '/bubu/foto5.jpeg',
-  '/bubu/foto6.jpeg',
-  '/bubu/foto7.jpeg',
-  '/bubu/foto8.jpeg',
-  '/bubu/foto9.jpeg',
-  '/bubu/foto10.jpeg'
+    `${BASE_URL}foto1.jpeg`,
+    `${BASE_URL}foto2.jpeg`,
+    `${BASE_URL}foto4.jpeg`,
+    `${BASE_URL}foto5.jpeg`,
+    `${BASE_URL}foto6.jpeg`,
+    `${BASE_URL}foto7.jpeg`,
+    `${BASE_URL}foto8.jpeg`,
+    `${BASE_URL}foto9.jpeg`,
+    `${BASE_URL}foto10.jpeg`
   ],
   razonesAmor: [
     'Tu felicidad ilumina mis días',

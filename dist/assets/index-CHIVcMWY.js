@@ -1,4 +1,4 @@
-(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))o(n);new MutationObserver(n=>{for(const l of n)if(l.type==="childList")for(const d of l.addedNodes)d.tagName==="LINK"&&d.rel==="modulepreload"&&o(d)}).observe(document,{childList:!0,subtree:!0});function a(n){const l={};return n.integrity&&(l.integrity=n.integrity),n.referrerPolicy&&(l.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?l.credentials="include":n.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function o(n){if(n.ep)return;n.ep=!0;const l=a(n);fetch(n.href,l)}})();const s={nombreNovia:"Bubu",fotos:["/bubu/foto1.jpeg","/bubu/foto2.jpeg","/bubu/foto4.jpeg","/bubu/foto5.jpeg","/bubu/foto6.jpeg","/bubu/foto7.jpeg","/bubu/foto8.jpeg","/bubu/foto9.jpeg","/bubu/foto10.jpeg"],razonesAmor:["Tu felicidad ilumina mis días","Me encantas vos y tu sentido del humor","Tu compañía hace todo mejor","Me inspirás a ser mejor persona"],preguntasTrivia:[{pregunta:"¿Cuál es tu color favorito?",opciones:["Azul","Negro","Lila"],respuesta:0},{pregunta:"¿Dónde conociste al Julibaby?",opciones:["Trabajo","Amigos","Facultad"],respuesta:2},{pregunta:"¿Cuál es tu comida favorita?",opciones:["Asado","Sushi","Fideos"],respuesta:1}]},t={currentPage:"home",gameScore:0,revealed:new Set,musicPlaying:!1,triviaActual:0,respuestaCorrecta:null};function c(){return{app:document.getElementById("app"),navbar:document.getElementById("navbar"),content:document.getElementById("content"),particles:document.getElementById("particles")}}function m(r,e,a){const o=document.createElement(r);return o.className=e,o}function p(){const{particles:r}=c();r.innerHTML="";for(let e=0;e<30;e++){const a=m("div","fixed w-2 h-2 bg-rose-300 rounded-full pointer-events-none animate-fall"),o=Math.random()*100,n=Math.random()*.5,l=2+Math.random()*1;a.style.left=`${o}%`,a.style.top="-10px",a.style.animationDelay=`${n}s`,a.style.animationDuration=`${l}s`,a.style.opacity=String(Math.random()*.5+.3),r.appendChild(a)}}function b(){const{navbar:r}=c();r.innerHTML=`
+(function(){const e=document.createElement("link").relList;if(e&&e.supports&&e.supports("modulepreload"))return;for(const n of document.querySelectorAll('link[rel="modulepreload"]'))o(n);new MutationObserver(n=>{for(const l of n)if(l.type==="childList")for(const c of l.addedNodes)c.tagName==="LINK"&&c.rel==="modulepreload"&&o(c)}).observe(document,{childList:!0,subtree:!0});function a(n){const l={};return n.integrity&&(l.integrity=n.integrity),n.referrerPolicy&&(l.referrerPolicy=n.referrerPolicy),n.crossOrigin==="use-credentials"?l.credentials="include":n.crossOrigin==="anonymous"?l.credentials="omit":l.credentials="same-origin",l}function o(n){if(n.ep)return;n.ep=!0;const l=a(n);fetch(n.href,l)}})();const i="/bubu/",s={nombreNovia:"Bubu",fotos:[`${i}foto1.jpeg`,`${i}foto2.jpeg`,`${i}foto4.jpeg`,`${i}foto5.jpeg`,`${i}foto6.jpeg`,`${i}foto7.jpeg`,`${i}foto8.jpeg`,`${i}foto9.jpeg`,`${i}foto10.jpeg`],razonesAmor:["Tu felicidad ilumina mis días","Me encantas vos y tu sentido del humor","Tu compañía hace todo mejor","Me inspirás a ser mejor persona"],preguntasTrivia:[{pregunta:"¿Cuál es tu color favorito?",opciones:["Azul","Negro","Lila"],respuesta:0},{pregunta:"¿Dónde conociste al Julibaby?",opciones:["Trabajo","Amigos","Facultad"],respuesta:2},{pregunta:"¿Cuál es tu comida favorita?",opciones:["Asado","Sushi","Fideos"],respuesta:1}]},t={currentPage:"home",gameScore:0,revealed:new Set,musicPlaying:!1,triviaActual:0,respuestaCorrecta:null};function u(){return{app:document.getElementById("app"),navbar:document.getElementById("navbar"),content:document.getElementById("content"),particles:document.getElementById("particles")}}function p(r,e,a){const o=document.createElement(r);return o.className=e,o}function b(){const{particles:r}=u();r.innerHTML="";for(let e=0;e<30;e++){const a=p("div","fixed w-2 h-2 bg-rose-300 rounded-full pointer-events-none animate-fall"),o=Math.random()*100,n=Math.random()*.5,l=2+Math.random()*1;a.style.left=`${o}%`,a.style.top="-10px",a.style.animationDelay=`${n}s`,a.style.animationDuration=`${l}s`,a.style.opacity=String(Math.random()*.5+.3),r.appendChild(a)}}function f(){const{navbar:r}=u();r.innerHTML=`
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-blue-200">
       <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
         <div class="flex items-center gap-2">
@@ -16,7 +16,7 @@
         </button>
       </div>
     </nav>
-  `;const e=r.querySelector("#musicBtn");e==null||e.addEventListener("click",()=>{t.musicPlaying=!t.musicPlaying,t.musicPlaying?e.classList.add("bg-rose-100","text-rose-600"):e.classList.remove("bg-rose-100","text-rose-600")})}function f(){var e,a,o;const{content:r}=c();r.innerHTML=`
+  `;const e=r.querySelector("#musicBtn");e==null||e.addEventListener("click",()=>{t.musicPlaying=!t.musicPlaying,t.musicPlaying?e.classList.add("bg-rose-100","text-rose-600"):e.classList.remove("bg-rose-100","text-rose-600")})}function h(){var e,a,o;const{content:r}=u();r.innerHTML=`
     <div class="max-w-6xl mx-auto space-y-8 py-12">
       <div class="text-center space-y-6">
         <div class="flex justify-center">
@@ -64,7 +64,7 @@
         </div>
       </div>
     </div>
-  `,(e=document.getElementById("btnGaleria"))==null||e.addEventListener("click",()=>{t.currentPage="galeria",i()}),(a=document.getElementById("btnRazones"))==null||a.addEventListener("click",()=>{t.currentPage="razones",i()}),(o=document.getElementById("btnTrivia"))==null||o.addEventListener("click",()=>{t.currentPage="trivia",t.triviaActual=0,t.gameScore=0,t.respuestaCorrecta=null,i()}),p()}function h(){var e;const{content:r}=c();r.innerHTML=`
+  `,(e=document.getElementById("btnGaleria"))==null||e.addEventListener("click",()=>{t.currentPage="galeria",d()}),(a=document.getElementById("btnRazones"))==null||a.addEventListener("click",()=>{t.currentPage="razones",d()}),(o=document.getElementById("btnTrivia"))==null||o.addEventListener("click",()=>{t.currentPage="trivia",t.triviaActual=0,t.gameScore=0,t.respuestaCorrecta=null,d()}),b()}function x(){var e;const{content:r}=u();r.innerHTML=`
     <div class="max-w-6xl mx-auto">
       <button id="btnVolver" class="mb-6 px-6 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all text-gray-700 font-medium cursor-pointer">
         ← Volver
@@ -80,7 +80,7 @@
         `).join("")}
       </div>
     </div>
-  `,(e=document.getElementById("btnVolver"))==null||e.addEventListener("click",()=>{t.currentPage="home",i()})}function x(){var e;const{content:r}=c();r.innerHTML=`
+  `,(e=document.getElementById("btnVolver"))==null||e.addEventListener("click",()=>{t.currentPage="home",d()})}function y(){var e;const{content:r}=u();r.innerHTML=`
     <div class="max-w-6xl mx-auto">
       <button id="btnVolver" class="mb-6 px-6 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all text-gray-700 font-medium cursor-pointer">
         ← Volver
@@ -100,7 +100,7 @@
         `).join("")}
       </div>
     </div>
-  `,(e=document.getElementById("btnVolver"))==null||e.addEventListener("click",()=>{t.currentPage="home",i()}),s.razonesAmor.forEach((a,o)=>{var n;(n=document.getElementById(`razon-${o}`))==null||n.addEventListener("click",()=>{y(o)})})}function y(r){t.revealed.has(r)?t.revealed.delete(r):t.revealed.add(r);const e=document.getElementById(`razon-${r}`);e&&(t.revealed.has(r)?(e.className="cursor-pointer relative h-32 rounded-2xl overflow-hidden transition-all hover:shadow-lg bg-gradient-to-br from-blue-400 to-purple-500",e.innerHTML=`
+  `,(e=document.getElementById("btnVolver"))==null||e.addEventListener("click",()=>{t.currentPage="home",d()}),s.razonesAmor.forEach((a,o)=>{var n;(n=document.getElementById(`razon-${o}`))==null||n.addEventListener("click",()=>{w(o)})})}function w(r){t.revealed.has(r)?t.revealed.delete(r):t.revealed.add(r);const e=document.getElementById(`razon-${r}`);e&&(t.revealed.has(r)?(e.className="cursor-pointer relative h-32 rounded-2xl overflow-hidden transition-all hover:shadow-lg bg-gradient-to-br from-blue-400 to-purple-500",e.innerHTML=`
         <div class="absolute inset-0 flex items-center justify-center p-6 text-center">
           <p class="text-white font-semibold text-lg">${s.razonesAmor[r]}</p>
         </div>
@@ -113,7 +113,7 @@
             <p class="text-gray-600 font-medium">Click para descubrir</p>
           </div>
         </div>
-      `))}function v(){var o,n,l;const{content:r}=c(),e=s.preguntasTrivia[t.triviaActual],a=(t.triviaActual+1)/s.preguntasTrivia.length*100;t.triviaActual<s.preguntasTrivia.length?(r.innerHTML=`
+      `))}function g(){var o,n,l;const{content:r}=u(),e=s.preguntasTrivia[t.triviaActual],a=(t.triviaActual+1)/s.preguntasTrivia.length*100;t.triviaActual<s.preguntasTrivia.length?(r.innerHTML=`
       <div class="max-w-2xl mx-auto">
         <button id="btnVolver" class="mb-6 px-6 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all text-gray-700 font-medium cursor-pointer">
           ← Volver
@@ -137,12 +137,12 @@
           </h3>
 
           <div class="space-y-3" id="opciones">
-            ${e.opciones.map((d,u)=>`
+            ${e.opciones.map((c,v)=>`
               <button
-                id="opcion-${u}"
+                id="opcion-${v}"
                 class="w-full p-4 rounded-xl font-semibold transition-all text-lg bg-gray-100 hover:bg-blue-100 text-gray-900 cursor-pointer"
               >
-                ${d}
+                ${c}
               </button>
             `).join("")}
           </div>
@@ -150,7 +150,7 @@
           <div id="resultado"></div>
         </div>
       </div>
-    `,(o=document.getElementById("btnVolver"))==null||o.addEventListener("click",()=>{t.currentPage="home",i()}),e.opciones.forEach((d,u)=>{var g;(g=document.getElementById(`opcion-${u}`))==null||g.addEventListener("click",()=>{w(u)})})):(r.innerHTML=`
+    `,(o=document.getElementById("btnVolver"))==null||o.addEventListener("click",()=>{t.currentPage="home",d()}),e.opciones.forEach((c,v)=>{var m;(m=document.getElementById(`opcion-${v}`))==null||m.addEventListener("click",()=>{L(v)})})):(r.innerHTML=`
       <div class="max-w-2xl mx-auto">
         <button id="btnVolver" class="mb-6 px-6 py-2 bg-white rounded-full shadow-md hover:shadow-lg transition-all text-gray-700 font-medium cursor-pointer">
           ← Volver
@@ -165,13 +165,13 @@
           </button>
         </div>
       </div>
-    `,(n=document.getElementById("btnVolver"))==null||n.addEventListener("click",()=>{t.currentPage="home",i()}),(l=document.getElementById("btnJugarDeNuevo"))==null||l.addEventListener("click",()=>{t.triviaActual=0,t.gameScore=0,t.respuestaCorrecta=null,i()}))}function w(r){const e=s.preguntasTrivia[t.triviaActual];if(r===e.respuesta){t.respuestaCorrecta=!0,t.gameScore+=1,document.querySelectorAll("#opciones button").forEach(o=>{o.disabled=!0});const a=document.getElementById("resultado");a&&(a.innerHTML=`
+    `,(n=document.getElementById("btnVolver"))==null||n.addEventListener("click",()=>{t.currentPage="home",d()}),(l=document.getElementById("btnJugarDeNuevo"))==null||l.addEventListener("click",()=>{t.triviaActual=0,t.gameScore=0,t.respuestaCorrecta=null,d()}))}function L(r){const e=s.preguntasTrivia[t.triviaActual];if(r===e.respuesta){t.respuestaCorrecta=!0,t.gameScore+=1,document.querySelectorAll("#opciones button").forEach(o=>{o.disabled=!0});const a=document.getElementById("resultado");a&&(a.innerHTML=`
         <div class="mt-6 p-4 rounded-xl text-center font-bold text-lg bg-green-100 text-green-700">
           ¡Correcto! 🎉
         </div>
-      `),setTimeout(()=>{t.triviaActual<s.preguntasTrivia.length-1?(t.triviaActual+=1,t.respuestaCorrecta=null,v()):(t.respuestaCorrecta=null,v())},1500)}else{const a=document.getElementById(`opcion-${r}`);a&&(a.classList.add("bg-red-400","text-white","opacity-50"),a.disabled=!0);const o=document.getElementById("resultado");o&&(o.innerHTML=`
+      `),setTimeout(()=>{t.triviaActual<s.preguntasTrivia.length-1?(t.triviaActual+=1,t.respuestaCorrecta=null,g()):(t.respuestaCorrecta=null,g())},1500)}else{const a=document.getElementById(`opcion-${r}`);a&&(a.classList.add("bg-red-400","text-white","opacity-50"),a.disabled=!0);const o=document.getElementById("resultado");o&&(o.innerHTML=`
         <div class="mt-6 p-4 rounded-xl text-center font-bold text-lg bg-red-100 text-red-700">
           ❌ Intenta de nuevo
         </div>
-      `),setTimeout(()=>{o&&(o.innerHTML="")},1500)}}function i(){switch(b(),t.currentPage){case"home":f();break;case"galeria":h();break;case"razones":x();break;case"trivia":v();break}}document.addEventListener("DOMContentLoaded",()=>{i()});
-//# sourceMappingURL=index-BwUt6mId.js.map
+      `),setTimeout(()=>{o&&(o.innerHTML="")},1500)}}function d(){switch(f(),t.currentPage){case"home":h();break;case"galeria":x();break;case"razones":y();break;case"trivia":g();break}}document.addEventListener("DOMContentLoaded",()=>{d()});
+//# sourceMappingURL=index-CHIVcMWY.js.map
