@@ -22,15 +22,15 @@ const CONFIG = {
   nombreNovia: 'Bubu',
   fechaCumple: new Date('2026-02-10'),
   fotos: [
-    '/foto1.jpeg',
-  '/foto2.jpeg',
-  '/foto4.jpeg',
-  '/foto5.jpeg',
-  '/foto6.jpeg',
-  '/foto7.jpeg',
-  '/foto8.jpeg',
-  '/foto9.jpeg',
-  '/foto10.jpeg'
+    '/bubu/foto1.jpeg',
+  '/bubu/foto2.jpeg',
+  '/bubu/foto4.jpeg',
+  '/bubu/foto5.jpeg',
+  '/bubu/foto6.jpeg',
+  '/bubu/foto7.jpeg',
+  '/bubu/foto8.jpeg',
+  '/bubu/foto9.jpeg',
+  '/bubu/foto10.jpeg'
   ],
   razonesAmor: [
     'Tu felicidad ilumina mis días',
