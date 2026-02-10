@@ -59,6 +59,9 @@ const CONFIG = {
   ] as PreguntaTrivia[],
 };
 
+const musicaBackground = new Audio(`${BASE_URL}musica.mp3`);
+musicaBackground.loop = true;
+
 // ===== ESTADO =====
 interface State {
   currentPage: Page;
@@ -124,6 +127,10 @@ function crearConfetiParticulas(): void {
 
 function renderNavbar(): void {
   const { navbar } = getElements();
+  
+  // Determinamos las clases del botón según el estado actual
+  const activeClasses = state.musicPlaying ? 'bg-rose-100 text-rose-600' : 'bg-gray-100 text-gray-600';
+
   navbar.innerHTML = `
     <nav class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md border-b border-blue-200">
       <div class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
@@ -132,10 +139,10 @@ function renderNavbar(): void {
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
           <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-500 to-purple-500 bg-clip-text text-transparent">
-  ¡Feliz Cumpleaños ${CONFIG.nombreNovia}!
-</h1>
+            ¡Feliz Cumpleaños ${CONFIG.nombreNovia}!
+          </h1>
         </div>
-        <button id="musicBtn" class="p-2 rounded-full transition-all bg-gray-100 text-gray-600 hover:bg-rose-100 hover:text-rose-600">
+        <button id="musicBtn" class="p-2 rounded-full transition-all ${activeClasses} hover:scale-110">
           <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l12-3v13M9 19c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2zm12-3c0 1.105-1.343 2-3 2s-3-.895-3-2 1.343-2 3-2 3 .895 3 2z"/>
           </svg>
@@ -147,10 +154,15 @@ function renderNavbar(): void {
   const musicBtn = navbar.querySelector('#musicBtn');
   musicBtn?.addEventListener('click', () => {
     state.musicPlaying = !state.musicPlaying;
+    
     if (state.musicPlaying) {
-      musicBtn.classList.add('bg-rose-100', 'text-rose-600');
+      musicaBackground.play().catch(e => console.error("Error al reproducir audio:", e));
+      musicBtn.classList.add('bg-rose-100', 'text-rose-600', 'animate-pulse');
+      musicBtn.classList.remove('bg-gray-100', 'text-gray-600');
     } else {
-      musicBtn.classList.remove('bg-rose-100', 'text-rose-600');
+      musicaBackground.pause();
+      musicBtn.classList.remove('bg-rose-100', 'text-rose-600', 'animate-pulse');
+      musicBtn.classList.add('bg-gray-100', 'text-gray-600');
     }
   });
 }
