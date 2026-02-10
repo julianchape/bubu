@@ -61,6 +61,20 @@ const CONFIG = {
 
 const musicaBackground = new Audio(`${BASE_URL}musica.mp3`);
 musicaBackground.loop = true;
+musicaBackground.volume = 0;
+
+function fadeInAudio(audio: HTMLAudioElement) {
+  audio.play();
+  let volume = 0;
+  const interval = setInterval(() => {
+    if (volume < 0.5) { // Lo dejamos al 50% para que no tape los pensamientos
+      volume += 0.05;
+      audio.volume = parseFloat(volume.toFixed(2));
+    } else {
+      clearInterval(interval);
+    }
+  }, 200); // Sube el volumen cada 200ms
+}
 
 // ===== ESTADO =====
 interface State {
@@ -107,13 +121,16 @@ function crearConfetiParticulas(): void {
   particles.innerHTML = '';
 
   for (let i = 0; i < 30; i++) {
+    // Cambiamos 'bg-rose-300' por 'bg-indigo-200' (lila suave) o 'bg-blue-200'
+    const colorClass = i % 2 === 0 ? 'bg-indigo-200' : 'bg-blue-200';
     const particula = createElement(
       'div',
-      'fixed w-2 h-2 bg-rose-300 rounded-full pointer-events-none animate-fall'
+      `fixed w-2 h-2 ${colorClass} rounded-full pointer-events-none animate-fall`
     );
+    
     const left = Math.random() * 100;
     const delay = Math.random() * 0.5;
-    const duration = 2 + Math.random() * 1;
+    const duration = 2 + Math.random() * 2;
 
     particula.style.left = `${left}%`;
     particula.style.top = '-10px';
@@ -151,17 +168,17 @@ function renderNavbar(): void {
     </nav>
   `;
 
-  const musicBtn = navbar.querySelector('#musicBtn');
+const musicBtn = navbar.querySelector('#musicBtn');
   musicBtn?.addEventListener('click', () => {
     state.musicPlaying = !state.musicPlaying;
     
     if (state.musicPlaying) {
-      musicaBackground.play().catch(e => console.error("Error al reproducir audio:", e));
-      musicBtn.classList.add('bg-rose-100', 'text-rose-600', 'animate-pulse');
+      fadeInAudio(musicaBackground);
+      musicBtn.classList.add('bg-indigo-100', 'text-indigo-600', 'animate-pulse');
       musicBtn.classList.remove('bg-gray-100', 'text-gray-600');
     } else {
       musicaBackground.pause();
-      musicBtn.classList.remove('bg-rose-100', 'text-rose-600', 'animate-pulse');
+      musicBtn.classList.remove('bg-indigo-100', 'text-indigo-600', 'animate-pulse');
       musicBtn.classList.add('bg-gray-100', 'text-gray-600');
     }
   });
